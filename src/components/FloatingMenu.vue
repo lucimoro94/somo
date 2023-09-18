@@ -15,6 +15,10 @@
                     <ShoppingList :title="'Shopping List'"/>
                 </v-list-item-title>
 
+                <v-list-item-title>
+                    <AddProduct :title="'Add Product'"/>
+                </v-list-item-title>
+
             </v-list-item>
         </v-list>
         
@@ -29,6 +33,7 @@
     import { storeToRefs } from 'pinia'
     import ShoppingList from '@/components/ShoppingList.vue'
     import Account from '@/components/Account.vue'
+    import AddProduct from '@/components/AddProduct.vue'
     
     import { appStore } from '@/store/app'
 

@@ -20,7 +20,6 @@ export const userStore = defineStore('userStore', () => {
     if(users.value.filter((user) => user.email == data.email && user.password == data.password).length > 0){
       users.value.filter((user) => user.email == data.email && user.password == data.password)[0].logged = true      
       userLogged.value = true
-      console.log(users.value)
     }
     else{
       userLogged.value = false
