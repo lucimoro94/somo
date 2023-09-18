@@ -14,7 +14,7 @@ export const userStore = defineStore('userStore', () => {
 
   const get_users = computed(() => users)
 
-  const get_loggedUser = computed(() => users.filter((user) => user.logged == true)[0])
+  const get_loggedUser = computed(() => users.value.filter((user) => user.logged == true)[0])
 
   function login(data){
     if(users.value.filter((user) => user.email == data.email && user.password == data.password).length > 0){
