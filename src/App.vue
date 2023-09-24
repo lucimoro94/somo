@@ -11,7 +11,7 @@
 
 <script setup>
 import Product from '@/components/Product.vue'
-import SearchBar from '@/components/Searchbar.vue'
+import SearchBar from '@/components/SearchBar.vue'
 import { appStore } from '@/stores/Store.js'
 
 const products = appStore().getProducts
