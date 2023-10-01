@@ -11,7 +11,40 @@ export const appStore = defineStore('appStore', () => {
     const db = useFirestore()
     const tblProducts = useCollection(collection(db, 'products'))
 
+    const tblUsers = useCollection(collection(db, 'users'))
+
     const getProducts = computed(() => tblProducts)
 
-    return {count, getProducts}
+    const getUsers = computed(() => tblUsers)
+
+    const isUserLogged = ref(false)
+
+    function userLogin(user){
+
+        let loggedUser = tblUsers.value.filter((_user) => _user.email == user.email && _user.password == user.password)
+
+        if(loggedUser.length > 0){
+            isUserLogged.value = true
+        }
+        else{
+            isUserLogged.value = false
+            return 
+        }
+
+        return loggedUser[0]
+
+    }
+
+    function addNewUser(user){
+        addDoc(collection(db, "users"), {
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          password: user.password,
+          logged: false
+          //password: doc(db, 'stores', data.store) for reference
+        })
+    }
+
+    return {count, getProducts, getUsers, isUserLogged, userLogin, addNewUser}
 })
